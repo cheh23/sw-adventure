@@ -1,0 +1,131 @@
+*{
+    padding: 0; margin: 0; 
+    box-sizing: border-box;
+  }
+    
+      body {
+        font-family: Roboto, sans-serif; 
+      }
+
+  .container-out{
+    /* градиент можно делать с помощью генератора, но в нашем случае он простой между двумя цветами */
+    background-image: linear-gradient(#f9f586, #96fbc4);
+    background-repeat: no-repeat;
+
+    /* По-умолчанию высота папы равна высоте контента внутри него, поэтому мы задаем ему высоту 100% чтобы растянуть его на всю страницу его родителя-body. А чтобы body задать высоту 100%, нужно чтобы и у родителя html была высота 100%
+    Это слишком много кода. Есть способ проще - отслеживать реальную высоту экрана в относительных единицах vh (условно 1vh = 1%*/
+    height: 100vh;
+    padding: 100px;
+
+    /* сделаем флекс-контейнером для содержимого */
+    display: flex;
+    /* центрируем флекс-детей по вертикльному центру */
+    align-items: center;
+    /* центрируем флекс-детей по горизонтальному центру */
+    justify-content: center;
+  }
+ 
+
+
+      /* --------стили карточки------------- */
+      .kartka {
+        max-width: 500px;
+        min-width: 300px;
+        
+        box-shadow: 0px 14px 80px #22233a80;
+        
+        border-radius: 10px;
+        /* background: url(murash.jpg) no-repeat;
+        background-position: -100px; */
+        /* чтобы позиционировать элементы внутри контейнера, используем связку  relative - absolute родителя и детей */
+        position: relative;
+        overflow: hidden; /* все, что вылезет за границы, обрежется */
+        
+        display: flex;
+        justify-content: space-between;
+        
+      }
+  
+      .content-text {
+        padding: 60px 35px 35px 35px;
+        background-color: white;
+        flex: 70%;
+      }
+  
+      .foto-murash{
+          background: url(murash.jpg) no-repeat center center;
+          background-size: cover;
+          flex: 30%;
+      }
+
+      /* ----стили аватарки--------------- */
+      .img-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        border: 6px solid white;
+        background: url(murash.jpg) no-repeat;
+        background-position: center top;
+        /* подогнать размер пропорционально под размер элемента */
+        background-size: cover;
+
+        /* позиционируем и заодно исключаем его из потока флекс детей*/
+        position: absolute;
+        top: 15px;
+        /* позицию нужно установить на краю блока с инфой. Чтобы не подбирать мы можем использовать функци calc() которую можно использовать для любой длины, размещения изображений, рассчитать границы, поля, отступы, шрифты, и залить цветом, причем в ней можно использовать и % и фиксированные размеры.*/
+        /* граница находится на ширине width: 30%; 
+        а половина размера  img-avatar = 1/2 (width: 80px) = 40px*/
+        left:calc(30% - 45px);
+        z-index: 1;
+      }
+  
+      /* --------стили в правой колонке с инфой */
+      .title {
+        text-align: right;
+        color: #579122;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        
+      }
+  
+      h2 {
+        margin-bottom: 5px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #2e2e2e;
+      }
+      .text {
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+  
+      /* создаем родительский флекс-контейнер для кнопок-иконок */
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      /* стили кнопок-иконок  */
+      button {
+        font-size: 28px;
+        line-height: 28px;
+        cursor: pointer;
+        color: #9ed35e;
+        /* обнуляем браузерные стили для  button*/
+        border: none;
+        background: none;  
+      }      
+      .ic1, .ic3 {
+        /* немного уменьшим символы по сравнению с иконкой письма */
+        font-size: 26px;
+      }
+      button:hover {
+        /*поворот при наведении на 30 градусов по часовой */
+        transform: rotate(30deg);
+        color: #579122;
+              /* сделаем плавное изменение всего для кнопок */
+              transition: all 0.5s;
+      }
+
+      
